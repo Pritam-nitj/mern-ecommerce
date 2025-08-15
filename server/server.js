@@ -1,4 +1,6 @@
 const express = require("express");
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -15,8 +17,6 @@ const shopReviewRouter = require("./routes/shop/review-routes");
 
 const commonFeatureRouter = require("./routes/common/feature-routes");
 
-//create a database connection -> u can also
-//create a separate file for this and then import/use that file here
 
 mongoose
   .connect(`mongodb://127.0.0.1:27017/Ecommerce`)
