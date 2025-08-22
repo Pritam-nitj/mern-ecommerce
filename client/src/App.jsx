@@ -31,11 +31,9 @@ function App() {
 
   useEffect(() => {
     dispatch(checkAuth());
-  }, [dispatch]);
+  }, [dispatch]); // to avoid linters (ES Lint)
 
   if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
-
-  console.log(isLoading, user);
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
