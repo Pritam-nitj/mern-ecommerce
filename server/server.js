@@ -17,7 +17,6 @@ const shopReviewRouter = require("./routes/shop/review-routes");
 
 const commonFeatureRouter = require("./routes/common/feature-routes");
 
-
 mongoose
   .connect(`${process.env.MONGODB_URI}/Ecommerce`)
   .then(() => console.log("MongoDB connected"))
