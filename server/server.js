@@ -19,7 +19,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 
 
 mongoose
-  .connect(`mongodb://127.0.0.1:27017/Ecommerce`)
+  .connect(`${process.env.MONGODB_URI}/Ecommerce`)
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
