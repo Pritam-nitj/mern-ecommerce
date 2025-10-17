@@ -14,7 +14,6 @@ import commonFeatureSlice from "./common-slice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
-
     adminProducts: adminProductsSlice,
     adminOrder: adminOrderSlice,
     shopProducts: shopProductsSlice,
