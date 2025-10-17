@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
       { expiresIn: "60m" }
     );
 
-    res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV !== "development",sameSite: "none" }).json({
+    res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV !== "development", sameSite: process.env.NODE_ENV === "development" ? "lax" : "none" }).json({
       success: true,
       message: "Logged in successfully",
       user: {
@@ -89,8 +89,19 @@ const loginUser = async (req, res) => {
 
 //logout
 
+// const logoutUser = (req, res) => {
+//   res.clearCookie("token").json({
+//     success: true,
+//     message: "Logged out successfully!",
+//   });
+// };
+
 const logoutUser = (req, res) => {
-  res.clearCookie("token").json({
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV !== "development",
+    sameSite: process.env.NODE_ENV === "development" ? "lax" : "none",
+  }).json({
     success: true,
     message: "Logged out successfully!",
   });
