@@ -13,7 +13,7 @@ function AdminDashboard() {
 
 
   function handleUploadFeatureImage() {
-    dispatch(addFeatureImage(uploadedImageUrl)).then((data) => {
+    dispatch(addFeatureImage(imageFile)).then((data) => {
       if (data?.payload?.success) {
         dispatch(getFeatureImages());
         setImageFile(null);
