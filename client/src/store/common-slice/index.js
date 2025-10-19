@@ -19,12 +19,32 @@ export const getFeatureImages = createAsyncThunk(
   }
 );
 
+// export const addFeatureImage = createAsyncThunk(
+//   "/order/addFeatureImage",
+//   async (image) => {
+//     const response = await axios.post(
+//       `${BASE_URL}/api/common/feature/add`,
+//       { image }
+//     );
+
+//     return response.data;
+//   }
+// );
+
 export const addFeatureImage = createAsyncThunk(
   "/order/addFeatureImage",
-  async (image) => {
+  async (file) => {
+    const formData = new FormData();
+    formData.append("image", file); // key name must match upload.single("image")
+
     const response = await axios.post(
       `${BASE_URL}/api/common/feature/add`,
-      { image }
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
 
     return response.data;

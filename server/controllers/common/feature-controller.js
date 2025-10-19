@@ -5,7 +5,7 @@ const cloudinary = require('../../helpers/cloudinary');
 const addFeatureImage = async (req, res) => {
   try {
     // 1. Check if a file was uploaded
-    if (!req.body.image) {
+    if (!req.file) {
       return res.status(400).json({
         success: false,
         message: "No image file provided.",

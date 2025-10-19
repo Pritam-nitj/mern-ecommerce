@@ -1,5 +1,5 @@
 const express = require("express");
-
+const multer = require('multer')
 const {
   addFeatureImage,
   getFeatureImages,
@@ -7,7 +7,9 @@ const {
 
 const router = express.Router();
 
-router.post("/add", addFeatureImage);
+const upload = multer(); 
+
+router.post("/add",upload.single("image"), addFeatureImage);
 router.get("/get", getFeatureImages);
 
 module.exports = router;
